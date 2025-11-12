@@ -1,0 +1,769 @@
+/* =========================================================
+   🌵 DICIONÁRIO NORDESTINO — Arte Cultural Responsiva e Viva
+   Autor: Você + ChatGPT 🔨🤖🔧
+   Versão: Responsiva + Interativa + Atmosférica
+========================================================= */
+
+/* ------------------------------
+   🌈 VARIÁVEIS GLOBAIS
+--------------------------------*/
+:root {
+  --areia: #f4e1a1;
+  --barro: #c96f32;
+  --barro-escuro: #a55324;
+  --cacto: #2f7a3f;
+  --ceu: #2a6f97;
+  --papel: #fffdf5;
+  --texto: #2b2b2b;
+  --sombra: rgba(0, 0, 0, 0.16);
+
+  --sertao-top: #fbd494;
+  --sertao-bottom: #e9b777;
+
+  --noite-bg-1: #171c30;
+  --noite-bg-2: #212a46;
+  --noite-text: #e6ebff;
+  --noite-border: #2a3552;
+  --noite-accent: #ffd79a;
+  --noite-card: #1a2238;
+
+  --transicao: 0.3s ease;
+  --raio: 12px;
+}
+
+/* ------------------------------
+   ⚙️ BASE & RESET
+--------------------------------*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  background: var(--areia);
+  color: var(--texto);
+  overflow-x: hidden;
+  transition: background var(--transicao), color var(--transicao);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* ------------------------------
+   🏜️ TEMA — AREIA, SERTÃO, NOITE
+--------------------------------*/
+body[data-theme="areia"] {
+  background: var(--areia);
+  color: var(--texto);
+}
+
+body[data-theme="sertao"] {
+  background: linear-gradient(180deg, var(--sertao-top), var(--sertao-bottom));
+}
+
+body[data-theme="noite"] {
+  background: radial-gradient(1200px 700px at 50% 10%, var(--noite-bg-1), var(--noite-bg-2));
+  color: var(--noite-text);
+}
+
+/* ✨ Transição global de temas */
+body.tema-transicao {
+  transition: background 0.5s ease, color 0.5s ease, filter 0.5s ease;
+}
+
+/* ------------------------------
+   🎨 CAPA INTERATIVA
+--------------------------------*/
+.capa {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--ceu), var(--barro));
+  transition: background 0.6s ease, transform var(--transicao), opacity var(--transicao);
+  perspective: 800px;
+}
+
+.capa-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.capa-conteudo {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.capa h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  animation: fadeInDown 1.2s ease both;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slogan {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+/* Temas da capa */
+body[data-theme="areia"] .capa {
+  background: linear-gradient(135deg, var(--ceu), var(--barro));
+}
+
+body[data-theme="sertao"] .capa {
+  background: linear-gradient(135deg, #d4a574, #8b6f47);
+}
+
+body[data-theme="noite"] .capa {
+  background: linear-gradient(135deg, #1a1f3a, #0d1b2a);
+}
+
+body[data-theme="noite"] .sol {
+  background: #e0e7ff;
+  box-shadow: 0 0 80px 20px rgba(224, 231, 255, 0.4);
+}
+
+body[data-theme="sertao"] .sol {
+  background: #ff9f40;
+  box-shadow: 0 0 80px 20px rgba(255, 159, 64, 0.5);
+}
+
+body[data-theme="noite"] .cacto {
+  background: #2d4a3e;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
+}
+
+body[data-theme="sertao"] .cacto {
+  background: #1f5a2f;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* ------------------------------
+   🌤️ ELEMENTOS DECORATIVOS
+--------------------------------*/
+.sol {
+  position: absolute;
+  top: 8%;
+  left: 8%;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #ffd36f;
+  box-shadow: 0 0 80px 20px #ffd36f50;
+  animation: girarSol 20s linear infinite;
+  transition: background 0.6s ease, box-shadow 0.6s ease;
+}
+
+@keyframes girarSol { to { transform: rotate(360deg); } }
+
+.cacto {
+  position: absolute;
+  bottom: 6%;
+  right: 10%;
+  width: 26px;
+  height: 110px;
+  background: var(--cacto);
+  border-radius: 13px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+  transform-origin: bottom center;
+  animation: balanco 3.6s ease-in-out infinite alternate;
+  transition: background 0.6s ease, box-shadow 0.6s ease;
+}
+
+@keyframes balanco {
+  from { transform: rotate(-3deg); }
+  to { transform: rotate(3deg); }
+}
+
+/* ------------------------------
+   ✨ PARTÍCULAS DE POEIRA
+--------------------------------*/
+#poeira {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.poeira {
+  position: absolute;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  opacity: 0;
+  animation: poeiraFlutua 12s linear infinite;
+}
+
+@keyframes poeiraFlutua {
+  0% { transform: translateY(100vh) scale(0.6); opacity: 0; }
+  10% { opacity: 0.5; }
+  50% { transform: translateY(-50vh) scale(1); opacity: 0.6; }
+  90% { opacity: 0.2; }
+  100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+}
+
+/* Tema noite — poeira vira brilho estelar */
+body[data-theme="noite"] .poeira {
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.2);
+}
+
+/* ------------------------------
+   📘 LIVRO — ANIMAÇÃO 3D SUAVE
+--------------------------------*/
+.livro {
+  position: relative;
+  margin: 30px auto;
+  max-width: 900px;
+  min-height: 500px;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(.4,0,.2,1);
+}
+
+.pagina {
+  position: relative;
+  background: var(--papel);
+  border-radius: var(--raio);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  min-height: 500px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.pagina.ativa {
+  display: grid;
+}
+
+.pagina.virando {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.pagina.voltando {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+body[data-theme="noite"] .pagina {
+  background: var(--noite-card);
+  color: var(--noite-text);
+  border: 1px solid var(--noite-border);
+}
+
+/* ------------------------------
+   🧾 VERBETES INTERATIVOS
+--------------------------------*/
+.verbete-card {
+  background: linear-gradient(180deg, #fffdf5 0%, #fff8ee 100%);
+  border-radius: var(--raio);
+  border: 1px solid #e4d3b6;
+  padding: 14px 18px;
+  transition: all 0.3s ease;
+}
+
+.verbete-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 18px 28px rgba(0, 0, 0, 0.15);
+}
+
+.verbete-card:active {
+  transform: scale(0.97);
+}
+
+/* Tema noite */
+body[data-theme="noite"] .verbete-card {
+  background: linear-gradient(180deg, #1a2238 0%, #182238 100%);
+  border-color: var(--noite-border);
+}
+
+/* ------------------------------
+   🔘 BOTÕES + INTERAÇÕES REAIS
+--------------------------------*/
+.btn {
+  padding: 10px 18px;
+  border-radius: var(--raio);
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+  border: 1px solid #ffffff33;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(3px);
+  position: relative;
+}
+
+.btn:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+}
+
+.btn.primario {
+  background: var(--barro);
+  border-color: var(--barro-escuro);
+}
+
+.btn.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Botão de favorito */
+.btn-fav.active {
+  color: gold;
+  text-shadow: 0 0 10px gold;
+  animation: estrelaBrilha 0.6s ease;
+}
+
+@keyframes estrelaBrilha {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+/* Botão de ouvir */
+.btn-ouvir.animando::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  animation: ondaSonora 0.6s ease-out;
+}
+
+@keyframes ondaSonora {
+  from { transform: scale(0.5); opacity: 1; }
+  to { transform: scale(2.2); opacity: 0; }
+}
+
+/* ------------------------------
+   🌌 FUNDO ESTRELADO — NOITE
+--------------------------------*/
+body[data-theme="noite"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  opacity: 0.09;
+  animation: brilharEstrelas 10s linear infinite alternate;
+  z-index: -3;
+}
+
+@keyframes brilharEstrelas {
+  from { opacity: 0.07; }
+  to { opacity: 0.14; }
+}
+
+/* ------------------------------
+   🎯 CONTAINER E LAYOUT PRINCIPAL
+--------------------------------*/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ------------------------------
+   🎨 CABEÇALHO E NAVEGAÇÃO
+--------------------------------*/
+.cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--raio);
+  box-shadow: 0 4px 12px var(--sombra);
+  margin-bottom: 20px;
+}
+
+body[data-theme="noite"] .cabecalho {
+  background: rgba(26, 34, 56, 0.8);
+  border: 1px solid var(--noite-border);
+}
+
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.titulo-app h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--barro);
+}
+
+body[data-theme="noite"] .titulo-app h2 {
+  color: var(--noite-accent);
+}
+
+.subtitulo {
+  margin: 0;
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.painel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+#busca {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--raio);
+  font-size: 1rem;
+  min-width: 250px;
+  transition: border-color var(--transicao);
+}
+
+#busca:focus {
+  outline: none;
+  border-color: var(--barro);
+}
+
+body[data-theme="noite"] #busca {
+  background: var(--noite-card);
+  border-color: var(--noite-border);
+  color: var(--noite-text);
+}
+
+#tema {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--raio);
+  font-size: 1rem;
+  background: white;
+  cursor: pointer;
+}
+
+body[data-theme="noite"] #tema {
+  background: var(--noite-card);
+  border-color: var(--noite-border);
+  color: var(--noite-text);
+}
+
+/* ------------------------------
+   🧾 ESTRUTURA DOS CARDS
+--------------------------------*/
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-top h4 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--barro);
+  font-weight: 700;
+}
+
+body[data-theme="noite"] .card-top h4 {
+  color: var(--noite-accent);
+}
+
+.btn-fav {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: #ccc;
+}
+
+.btn-fav:hover {
+  transform: scale(1.2);
+}
+
+.significado {
+  margin: 10px 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--texto);
+}
+
+body[data-theme="noite"] .significado {
+  color: var(--noite-text);
+}
+
+.exemplo {
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.03);
+  border-left: 3px solid var(--barro);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+body[data-theme="noite"] .exemplo {
+  background: rgba(255, 255, 255, 0.05);
+  border-left-color: var(--noite-accent);
+}
+
+.acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-ouvir {
+  padding: 6px 12px;
+  background: var(--barro);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.btn-ouvir:hover {
+  background: var(--barro-escuro);
+  transform: translateY(-2px);
+}
+
+/* ------------------------------
+   🧭 NAVEGAÇÃO DE PÁGINAS
+--------------------------------*/
+.navegacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px auto;
+  max-width: 900px;
+  gap: 15px;
+}
+
+.indicador {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--texto);
+}
+
+body[data-theme="noite"] .indicador {
+  color: var(--noite-text);
+}
+
+/* ------------------------------
+   📚 ÍNDICE LATERAL
+--------------------------------*/
+.indice {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  background: var(--papel);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+body[data-theme="noite"] .indice {
+  background: var(--noite-bg-2);
+  border-left: 1px solid var(--noite-border);
+}
+
+.indice[hidden] {
+  transform: translateX(100%);
+}
+
+.indice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.indice-header h3 {
+  margin: 0;
+  color: var(--barro);
+}
+
+body[data-theme="noite"] .indice-header h3 {
+  color: var(--noite-accent);
+}
+
+.letras {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.idx-letra {
+  padding: 10px;
+  background: var(--barro);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.idx-letra:hover {
+  background: var(--barro-escuro);
+  transform: scale(1.1);
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.idx-item {
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid #e4d3b6;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.idx-item:hover {
+  background: var(--barro);
+  color: white;
+  transform: translateX(5px);
+}
+
+body[data-theme="noite"] .idx-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--noite-border);
+  color: var(--noite-text);
+}
+
+/* ------------------------------
+   📄 CAPA - ELEMENTOS ADICIONAIS
+--------------------------------*/
+.cta {
+  display: flex;
+  gap: 15px;
+  margin: 25px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn.secundario {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn.secundario:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.creditos {
+  margin-top: 40px;
+  opacity: 0.8;
+}
+
+.creditos p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+/* ------------------------------
+   🦶 RODAPÉ
+--------------------------------*/
+.rodape {
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--texto);
+}
+
+body[data-theme="noite"] .rodape {
+  border-top-color: var(--noite-border);
+  color: var(--noite-text);
+}
+
+.rodape a {
+  color: var(--barro);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.rodape a:hover {
+  text-decoration: underline;
+}
+
+body[data-theme="noite"] .rodape a {
+  color: var(--noite-accent);
+}
+
+/* ------------------------------
+   📱 RESPONSIVIDADE AVANÇADA
+--------------------------------*/
+@media (max-width: 960px) {
+  .livro { max-width: 90%; }
+  .pagina { padding: 16px; }
+  .indice { width: 280px; }
+}
+
+@media (max-width: 600px) {
+  .capa h1 { font-size: 2rem; }
+  .btn { width: 100%; }
+  .verbete-card { font-size: 0.95rem; }
+  .cabecalho { flex-direction: column; }
+  .painel { width: 100%; }
+  #busca { min-width: 100%; }
+  .navegacao { flex-wrap: wrap; }
+  .indice { width: 100%; }
+}

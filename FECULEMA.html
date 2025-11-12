@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Palavras Guardadas</title>
+  <meta name="description" content="Descubra as Palavras Guardadas — um acervo cultural com palavras e expressões arretadas da nossa terra. Valorize a cultura local!"/>
+  <meta name="theme-color" content="#f4d35e"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dicionário Nordestino — Palavras Guardadas"/>
+  <meta property="og:description" content="Dicionário Rebuscado de Carolina"/>
+  <meta property="og:image" content="assets/capa-social.jpg"/>
+  <meta property="og:type" content="website"/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png"/>
+
+  <!-- Fontes e Estilos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="ArteCultural.css"/>
+
+  <!-- Script deferido -->
+  <script defer src="ArteCurturar.js"></script>
+</head>
+
+<body data-theme="areia">
+  <!-- 🌫️ PARTÍCULAS DE POEIRA -->
+  <div id="poeira" aria-hidden="true"></div>
+
+  <!-- 🏜️ CAPA PRINCIPAL -->
+  <section class="capa" id="capa" aria-label="Capa do Dicionário Nordestino">
+    <div class="capa-decor" aria-hidden="true">
+      <span class="sol parallax"></span>
+      <span class="cacto parallax"></span>
+    </div>
+
+    <div class="capa-conteudo">
+      <h1 tabindex="0">Dicionário Nordestino</h1>
+      <p class="slogan" tabindex="0">
+        Palavras e expressões arretadas da nossa cultura
+      </p>
+
+      <div class="cta">
+        <button id="entrar" class="btn primario pulse" aria-label="Entrar no dicionário">Entrar</button>
+        <button id="temaCapa" class="btn secundario" aria-label="Trocar tema">Trocar tema</button>
+      </div>
+
+      <div class="creditos">
+        <p>Projeto cultural — <strong>Feito com carinho nordestino</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📘 APLICATIVO PRINCIPAL -->
+  <div class="container" id="app" hidden>
+    <header class="cabecalho" role="banner">
+      <div class="branding">
+        <span class="logo" aria-hidden="true">🌵</span>
+        <div class="titulo-app">
+          <h2>Palavras Guardadas</h2>
+          <p class="subtitulo">Dicionário Rebuscado de Carolina</p>
+        </div>
+      </div>
+
+      <div class="painel">
+        <label for="busca" class="visually-hidden">Buscar palavra, significado ou exemplo</label>
+        <input id="busca" type="search" placeholder="Buscar palavra, significado ou exemplo..." aria-label="Buscar verbete" autocomplete="on"/>
+
+        <label for="tema" class="visually-hidden">Selecionar tema</label>
+        <select id="tema" aria-label="Selecionar tema">
+          <option value="areia">🌞 Areia</option>
+          <option value="sertao">🌵 Sertão</option>
+          <option value="noite">🌙 Noite</option>
+        </select>
+
+        <button id="indiceBtn" class="btn" aria-label="Abrir índice">📚 Índice</button>
+      </div>
+    </header>
+
+    <main class="livro" id="livro" aria-live="polite">
+      <!-- As páginas do dicionário serão injetadas via JS -->
+    </main>
+
+    <nav class="navegacao" aria-label="Navegação de páginas">
+      <button id="prev" class="btn" aria-label="Página anterior">◀ Anterior</button>
+      <span id="indicador" class="indicador" aria-live="polite">1 / 1</span>
+      <button id="next" class="btn primario" aria-label="Próxima página">Próximo ▶</button>
+    </nav>
+
+    <aside class="indice" id="indice" aria-label="Índice por letras" hidden>
+      <div class="indice-header">
+        <h3>Índice por letras</h3>
+        <button id="fecharIndice" class="btn" aria-label="Fechar índice">✖ Fechar</button>
+      </div>
+      <div class="letras" id="letras" role="navigation" aria-label="Letras do índice"></div>
+      <div class="lista" id="listaVerbetes"></div>
+    </aside>
+
+    <footer class="rodape">
+      <small>
+        🌾 Valorize a cultura local. Compartilhe e contribua com novos verbetes.<br/>
+        <a href="https://github.com/seuprojeto" target="_blank" rel="noopener noreferrer">Contribua no GitHub</a>
+      </small>
+    </footer>
+  </div>
+
+  <!-- 🎵 EFEITOS SONOROS -->
+  <audio id="efeitoEntrada" src="assets/efeito-entrada.mp3" preload="auto" hidden></audio>
+</body>
+</html>
