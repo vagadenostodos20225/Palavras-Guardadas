@@ -1,12 +1,9 @@
 /* =========================================================
-   🌵 DICIONÁRIO NORDESTINO — Arte Cultural Responsiva e Viva
-   Autor: Você + ChatGPT 🔨🤖🔧
-   Versão: Responsiva + Interativa + Atmosférica
+   🌵 DICIONÁRIO NORDESTINO — Design Premium Moderno
+   Versão Completa e Otimizada
 ========================================================= */
 
-/* ------------------------------
-   🌈 VARIÁVEIS GLOBAIS
---------------------------------*/
+/* VARIÁVEIS GLOBAIS */
 :root {
   --areia: #f4e1a1;
   --barro: #c96f32;
@@ -15,37 +12,35 @@
   --ceu: #2a6f97;
   --papel: #fffdf5;
   --texto: #2b2b2b;
-  --sombra: rgba(0, 0, 0, 0.16);
-
+  --sombra: rgba(0, 0, 0, 0.12);
+  
   --sertao-top: #fbd494;
   --sertao-bottom: #e9b777;
-
+  
   --noite-bg-1: #171c30;
   --noite-bg-2: #212a46;
   --noite-text: #e6ebff;
   --noite-border: #2a3552;
   --noite-accent: #ffd79a;
   --noite-card: #1a2238;
-
+  
   --transicao: 0.3s ease;
   --raio: 12px;
 }
 
-/* ------------------------------
-   ⚙️ BASE & RESET
---------------------------------*/
+/* BASE & RESET */
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: 'Sora', "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
   background: var(--areia);
   color: var(--texto);
   overflow-x: hidden;
-  transition: background var(--transicao), color var(--transicao);
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 button {
@@ -55,31 +50,12 @@ button {
   font-family: inherit;
 }
 
-/* ------------------------------
-   🏜️ TEMA — AREIA, SERTÃO, NOITE
---------------------------------*/
-body[data-theme="areia"] {
-  background: var(--areia);
-  color: var(--texto);
-}
+/* TEMAS */
+body[data-theme="areia"] { background: var(--areia); color: var(--texto); }
+body[data-theme="sertao"] { background: linear-gradient(180deg, var(--sertao-top), var(--sertao-bottom)); }
+body[data-theme="noite"] { background: radial-gradient(1200px 700px at 50% 10%, var(--noite-bg-1), var(--noite-bg-2)); color: var(--noite-text); }
 
-body[data-theme="sertao"] {
-  background: linear-gradient(180deg, var(--sertao-top), var(--sertao-bottom));
-}
-
-body[data-theme="noite"] {
-  background: radial-gradient(1200px 700px at 50% 10%, var(--noite-bg-1), var(--noite-bg-2));
-  color: var(--noite-text);
-}
-
-/* ✨ Transição global de temas */
-body.tema-transicao {
-  transition: background 0.5s ease, color 0.5s ease, filter 0.5s ease;
-}
-
-/* ------------------------------
-   🎨 CAPA INTERATIVA
---------------------------------*/
+/* ====== CAPA INICIAL ====== */
 .capa {
   position: relative;
   min-height: 100vh;
@@ -91,8 +67,7 @@ body.tema-transicao {
   color: #fff;
   overflow: hidden;
   background: linear-gradient(135deg, var(--ceu), var(--barro));
-  transition: background 0.6s ease, transform var(--transicao), opacity var(--transicao);
-  perspective: 800px;
+  transition: background 0.6s ease;
 }
 
 .capa-decor {
@@ -110,58 +85,74 @@ body.tema-transicao {
 }
 
 .capa h1 {
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-  animation: fadeInDown 1.2s ease both;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 1s ease both;
+  margin: 0 0 20px;
 }
 
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-25px); }
+  from { opacity: 0; transform: translateY(-30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .slogan {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  opacity: 0.9;
-  margin-bottom: 20px;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  opacity: 0.95;
+  margin-bottom: 40px;
 }
 
-/* Temas da capa */
-body[data-theme="areia"] .capa {
-  background: linear-gradient(135deg, var(--ceu), var(--barro));
+.cta {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
-body[data-theme="sertao"] .capa {
-  background: linear-gradient(135deg, #d4a574, #8b6f47);
+.btn {
+  padding: 14px 32px;
+  border-radius: var(--raio);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(5px);
 }
 
-body[data-theme="noite"] .capa {
-  background: linear-gradient(135deg, #1a1f3a, #0d1b2a);
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.25);
 }
 
-body[data-theme="noite"] .sol {
-  background: #e0e7ff;
-  box-shadow: 0 0 80px 20px rgba(224, 231, 255, 0.4);
+.btn.primario {
+  background: var(--barro);
+  border-color: var(--barro-escuro);
 }
 
-body[data-theme="sertao"] .sol {
-  background: #ff9f40;
-  box-shadow: 0 0 80px 20px rgba(255, 159, 64, 0.5);
+.btn.secundario {
+  background: rgba(255,255,255,0.1);
 }
 
-body[data-theme="noite"] .cacto {
-  background: #2d4a3e;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
+.btn.pulse {
+  animation: pulse 2s ease-in-out infinite;
 }
 
-body[data-theme="sertao"] .cacto {
-  background: #1f5a2f;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
-/* ------------------------------
-   🌤️ ELEMENTOS DECORATIVOS
---------------------------------*/
+.creditos {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+/* Elementos decorativos */
 .sol {
   position: absolute;
   top: 8%;
@@ -188,7 +179,7 @@ body[data-theme="sertao"] .cacto {
   box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
   transform-origin: bottom center;
   animation: balanco 3.6s ease-in-out infinite alternate;
-  transition: background 0.6s ease, box-shadow 0.6s ease;
+  transition: background 0.6s ease;
 }
 
 @keyframes balanco {
@@ -196,9 +187,7 @@ body[data-theme="sertao"] .cacto {
   to { transform: rotate(3deg); }
 }
 
-/* ------------------------------
-   ✨ PARTÍCULAS DE POEIRA
---------------------------------*/
+/* Partículas */
 #poeira {
   position: fixed;
   inset: 0;
@@ -225,218 +214,60 @@ body[data-theme="sertao"] .cacto {
   100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
 }
 
-/* Tema noite — poeira vira brilho estelar */
-body[data-theme="noite"] .poeira {
-  background: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.2);
-}
+/* Temas da capa */
+body[data-theme="areia"] .capa { background: linear-gradient(135deg, var(--ceu), var(--barro)); }
+body[data-theme="sertao"] .capa { background: linear-gradient(135deg, #d4a574, #8b6f47); }
+body[data-theme="noite"] .capa { background: linear-gradient(135deg, #1a1f3a, #0d1b2a); }
+body[data-theme="noite"] .sol { background: #e0e7ff; box-shadow: 0 0 80px 20px rgba(224, 231, 255, 0.4); }
+body[data-theme="sertao"] .sol { background: #ff9f40; box-shadow: 0 0 80px 20px rgba(255, 159, 64, 0.5); }
+body[data-theme="noite"] .cacto { background: #2d4a3e; }
+body[data-theme="sertao"] .cacto { background: #1f5a2f; }
+body[data-theme="noite"] .poeira { background: rgba(255, 255, 255, 0.45); box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.2); }
 
-/* ------------------------------
-   📘 LIVRO — ANIMAÇÃO 3D SUAVE
---------------------------------*/
-.livro {
-  position: relative;
-  margin: 30px auto;
-  max-width: 900px;
-  min-height: 500px;
-  perspective: 1400px;
-  transform-style: preserve-3d;
-  transition: transform 0.9s cubic-bezier(.4,0,.2,1);
-}
-
-.pagina {
-  position: relative;
-  background: var(--papel);
-  border-radius: var(--raio);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-  padding: 20px;
-  display: none;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-  min-height: 500px;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.pagina.ativa {
-  display: grid;
-}
-
-.pagina.virando {
-  opacity: 0;
-  transform: translateX(-20px);
-}
-
-.pagina.voltando {
-  opacity: 0;
-  transform: translateX(20px);
-}
-
-body[data-theme="noite"] .pagina {
-  background: var(--noite-card);
-  color: var(--noite-text);
-  border: 1px solid var(--noite-border);
-}
-
-/* ------------------------------
-   🧾 VERBETES INTERATIVOS
---------------------------------*/
-.verbete-card {
-  background: linear-gradient(180deg, #fffdf5 0%, #fff8ee 100%);
-  border-radius: var(--raio);
-  border: 1px solid #e4d3b6;
-  padding: 14px 18px;
-  transition: all 0.3s ease;
-}
-
-.verbete-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 18px 28px rgba(0, 0, 0, 0.15);
-}
-
-.verbete-card:active {
-  transform: scale(0.97);
-}
-
-/* Tema noite */
-body[data-theme="noite"] .verbete-card {
-  background: linear-gradient(180deg, #1a2238 0%, #182238 100%);
-  border-color: var(--noite-border);
-}
-
-/* ------------------------------
-   🔘 BOTÕES + INTERAÇÕES REAIS
---------------------------------*/
-.btn {
-  padding: 10px 18px;
-  border-radius: var(--raio);
-  background: rgba(255,255,255,0.14);
-  color: #fff;
-  border: 1px solid #ffffff33;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(3px);
-  position: relative;
-}
-
-.btn:hover {
-  background: rgba(255,255,255,0.25);
-  transform: translateY(-2px);
-}
-
-.btn.primario {
-  background: var(--barro);
-  border-color: var(--barro-escuro);
-}
-
-.btn.pulse {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-/* Botão de favorito */
-.btn-fav.active {
-  color: gold;
-  text-shadow: 0 0 10px gold;
-  animation: estrelaBrilha 0.6s ease;
-}
-
-@keyframes estrelaBrilha {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.3); }
-  100% { transform: scale(1); opacity: 0.9; }
-}
-
-/* Botão de ouvir */
-.btn-ouvir.animando::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.25);
-  animation: ondaSonora 0.6s ease-out;
-}
-
-@keyframes ondaSonora {
-  from { transform: scale(0.5); opacity: 1; }
-  to { transform: scale(2.2); opacity: 0; }
-}
-
-/* ------------------------------
-   🌌 FUNDO ESTRELADO — NOITE
---------------------------------*/
-body[data-theme="noite"]::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-  opacity: 0.09;
-  animation: brilharEstrelas 10s linear infinite alternate;
-  z-index: -3;
-}
-
-@keyframes brilharEstrelas {
-  from { opacity: 0.07; }
-  to { opacity: 0.14; }
-}
-
-/* ------------------------------
-   🎯 CONTAINER E LAYOUT PRINCIPAL
---------------------------------*/
+/* ====== APLICATIVO ====== */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 20px;
+  min-height: 100vh;
 }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ------------------------------
-   🎨 CABEÇALHO E NAVEGAÇÃO
---------------------------------*/
+/* Cabeçalho */
 .cabecalho {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: var(--raio);
   box-shadow: 0 4px 12px var(--sombra);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  backdrop-filter: blur(10px);
 }
 
 body[data-theme="noite"] .cabecalho {
-  background: rgba(26, 34, 56, 0.8);
+  background: rgba(26, 34, 56, 0.9);
   border: 1px solid var(--noite-border);
 }
 
 .branding {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 .titulo-app h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--barro);
 }
 
@@ -446,29 +277,67 @@ body[data-theme="noite"] .titulo-app h2 {
 
 .subtitulo {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   opacity: 0.8;
 }
 
-.painel {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
-
-#busca {
-  padding: 10px 15px;
+.controles-topo select {
+  padding: 10px 16px;
   border: 1px solid #ddd;
   border-radius: var(--raio);
   font-size: 1rem;
-  min-width: 250px;
-  transition: border-color var(--transicao);
+  background: white;
+  cursor: pointer;
+}
+
+body[data-theme="noite"] .controles-topo select {
+  background: var(--noite-card);
+  border-color: var(--noite-border);
+  color: var(--noite-text);
+}
+
+/* ====== FILTROS ====== */
+.filtros-section {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--raio);
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px var(--sombra);
+  backdrop-filter: blur(10px);
+}
+
+body[data-theme="noite"] .filtros-section {
+  background: rgba(26, 34, 56, 0.7);
+  border: 1px solid var(--noite-border);
+}
+
+.busca-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.busca-icone {
+  position: absolute;
+  left: 15px;
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+#busca {
+  width: 100%;
+  padding: 14px 50px 14px 50px;
+  border: 2px solid #ddd;
+  border-radius: var(--raio);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
 }
 
 #busca:focus {
   outline: none;
   border-color: var(--barro);
+  box-shadow: 0 0 0 4px rgba(201, 111, 50, 0.1);
 }
 
 body[data-theme="noite"] #busca {
@@ -477,59 +346,222 @@ body[data-theme="noite"] #busca {
   color: var(--noite-text);
 }
 
-#tema {
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: var(--raio);
-  font-size: 1rem;
-  background: white;
-  cursor: pointer;
+body[data-theme="noite"] #busca:focus {
+  border-color: var(--noite-accent);
+  box-shadow: 0 0 0 4px rgba(255, 215, 154, 0.1);
 }
 
-body[data-theme="noite"] #tema {
+.resultado-count {
+  position: absolute;
+  right: 15px;
+  font-size: 0.9rem;
+  color: var(--barro);
+  font-weight: 600;
+}
+
+body[data-theme="noite"] .resultado-count {
+  color: var(--noite-accent);
+}
+
+/* Filtro alfabético */
+.alfabeto-filtro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.letra-btn {
+  padding: 10px 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  color: var(--texto);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.letra-btn:hover {
+  background: var(--barro);
+  color: white;
+  border-color: var(--barro-escuro);
+  transform: translateY(-2px);
+}
+
+.letra-btn.active {
+  background: var(--barro);
+  color: white;
+  border-color: var(--barro-escuro);
+}
+
+body[data-theme="noite"] .letra-btn {
   background: var(--noite-card);
   border-color: var(--noite-border);
   color: var(--noite-text);
 }
 
-/* ------------------------------
-   🧾 ESTRUTURA DOS CARDS
---------------------------------*/
-.card-top {
+body[data-theme="noite"] .letra-btn:hover,
+body[data-theme="noite"] .letra-btn.active {
+  background: var(--noite-accent);
+  color: var(--noite-bg-1);
+  border-color: var(--noite-accent);
+}
+
+/* Filtro por tags */
+.tags-container {
+  margin-top: 15px;
+}
+
+.filter-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--texto);
+}
+
+body[data-theme="noite"] .filter-label {
+  color: var(--noite-text);
+}
+
+.tags-filtro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-btn {
+  padding: 8px 14px;
+  border: 2px solid #e4d3b6;
+  border-radius: 20px;
+  background: #fff;
+  color: var(--texto);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tag-btn:hover {
+  background: var(--cacto);
+  color: white;
+  border-color: var(--cacto);
+  transform: scale(1.05);
+}
+
+.tag-btn.active {
+  background: var(--cacto);
+  color: white;
+  border-color: var(--cacto);
+}
+
+body[data-theme="noite"] .tag-btn {
+  background: var(--noite-card);
+  border-color: var(--noite-border);
+  color: var(--noite-text);
+}
+
+body[data-theme="noite"] .tag-btn:hover,
+body[data-theme="noite"] .tag-btn.active {
+  background: var(--noite-accent);
+  color: var(--noite-bg-1);
+  border-color: var(--noite-accent);
+}
+
+/* ====== GRID DE VERBETES ====== */
+.verbetes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.verbete-card {
+  background: linear-gradient(135deg, #fffdf5 0%, #fff8ee 100%);
+  border-radius: var(--raio);
+  border: 1px solid #e4d3b6;
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.verbete-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--barro);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.verbete-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.verbete-card:hover::before {
+  transform: scaleY(1);
+}
+
+body[data-theme="noite"] .verbete-card {
+  background: linear-gradient(135deg, #1a2238 0%, #182238 100%);
+  border-color: var(--noite-border);
+}
+
+body[data-theme="noite"] .verbete-card::before {
+  background: var(--noite-accent);
+}
+
+.card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.card-top h4 {
+.card-header h3 {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--barro);
   font-weight: 700;
 }
 
-body[data-theme="noite"] .card-top h4 {
+body[data-theme="noite"] .card-header h3 {
   color: var(--noite-accent);
 }
 
 .btn-fav {
   background: none;
   border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+  font-size: 1.8rem;
   color: #ccc;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .btn-fav:hover {
-  transform: scale(1.2);
+  transform: scale(1.3);
+}
+
+.btn-fav.active {
+  color: gold;
+  text-shadow: 0 0 10px gold;
+  animation: estrelaBrilha 0.6s ease;
+}
+
+@keyframes estrelaBrilha {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
 }
 
 .significado {
-  margin: 10px 0;
+  margin: 12px 0;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--texto);
 }
 
@@ -538,194 +570,60 @@ body[data-theme="noite"] .significado {
 }
 
 .exemplo {
-  margin: 10px 0;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.03);
+  margin: 15px 0;
+  padding: 12px;
+  background: rgba(0,0,0,0.03);
   border-left: 3px solid var(--barro);
   font-style: italic;
   font-size: 0.95rem;
+  border-radius: 4px;
 }
 
 body[data-theme="noite"] .exemplo {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255,255,255,0.05);
   border-left-color: var(--noite-accent);
 }
 
-.acoes {
+.tags {
   display: flex;
-  gap: 10px;
-  margin-top: 12px;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 15px;
 }
 
-.btn-ouvir {
-  padding: 6px 12px;
-  background: var(--barro);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-}
-
-.btn-ouvir:hover {
-  background: var(--barro-escuro);
-  transform: translateY(-2px);
-}
-
-/* ------------------------------
-   🧭 NAVEGAÇÃO DE PÁGINAS
---------------------------------*/
-.navegacao {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 30px auto;
-  max-width: 900px;
-  gap: 15px;
-}
-
-.indicador {
+.tag {
+  padding: 4px 10px;
+  background: rgba(47, 122, 63, 0.1);
+  color: var(--cacto);
+  border-radius: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
-  font-size: 1.1rem;
-  color: var(--texto);
 }
 
-body[data-theme="noite"] .indicador {
-  color: var(--noite-text);
-}
-
-/* ------------------------------
-   📚 ÍNDICE LATERAL
---------------------------------*/
-.indice {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 320px;
-  height: 100vh;
-  background: var(--papel);
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  overflow-y: auto;
-  z-index: 1000;
-  transition: transform 0.3s ease;
-}
-
-body[data-theme="noite"] .indice {
-  background: var(--noite-bg-2);
-  border-left: 1px solid var(--noite-border);
-}
-
-.indice[hidden] {
-  transform: translateX(100%);
-}
-
-.indice-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.indice-header h3 {
-  margin: 0;
-  color: var(--barro);
-}
-
-body[data-theme="noite"] .indice-header h3 {
+body[data-theme="noite"] .tag {
+  background: rgba(255, 215, 154, 0.15);
   color: var(--noite-accent);
 }
 
-.letras {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-  gap: 8px;
-  margin-bottom: 20px;
+/* Sem resultados */
+.sem-resultados {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.3rem;
+  color: var(--texto);
+  opacity: 0.7;
 }
 
-.idx-letra {
-  padding: 10px;
-  background: var(--barro);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.idx-letra:hover {
-  background: var(--barro-escuro);
-  transform: scale(1.1);
-}
-
-.lista {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.idx-item {
-  padding: 12px;
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px solid #e4d3b6;
-  border-radius: 8px;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.idx-item:hover {
-  background: var(--barro);
-  color: white;
-  transform: translateX(5px);
-}
-
-body[data-theme="noite"] .idx-item {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--noite-border);
+body[data-theme="noite"] .sem-resultados {
   color: var(--noite-text);
 }
 
-/* ------------------------------
-   📄 CAPA - ELEMENTOS ADICIONAIS
---------------------------------*/
-.cta {
-  display: flex;
-  gap: 15px;
-  margin: 25px 0;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.btn.secundario {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.btn.secundario:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.creditos {
-  margin-top: 40px;
-  opacity: 0.8;
-}
-
-.creditos p {
-  margin: 5px 0;
-  font-size: 0.9rem;
-}
-
-/* ------------------------------
-   🦶 RODAPÉ
---------------------------------*/
+/* ====== RODAPÉ ====== */
 .rodape {
   text-align: center;
   padding: 30px 20px;
   margin-top: 40px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0,0,0,0.1);
   color: var(--texto);
 }
 
@@ -748,22 +646,11 @@ body[data-theme="noite"] .rodape a {
   color: var(--noite-accent);
 }
 
-/* ------------------------------
-   📱 RESPONSIVIDADE AVANÇADA
---------------------------------*/
-@media (max-width: 960px) {
-  .livro { max-width: 90%; }
-  .pagina { padding: 16px; }
-  .indice { width: 280px; }
-}
-
-@media (max-width: 600px) {
+/* ====== RESPONSIVIDADE ====== */
+@media (max-width: 768px) {
   .capa h1 { font-size: 2rem; }
-  .btn { width: 100%; }
-  .verbete-card { font-size: 0.95rem; }
-  .cabecalho { flex-direction: column; }
-  .painel { width: 100%; }
-  #busca { min-width: 100%; }
-  .navegacao { flex-wrap: wrap; }
-  .indice { width: 100%; }
+  .cabecalho { flex-direction: column; gap: 15px; }
+  .verbetes-grid { grid-template-columns: 1fr; }
+  .alfabeto-filtro { justify-content: center; }
+  .letra-btn { padding: 8px 12px; font-size: 0.9rem; }
 }
