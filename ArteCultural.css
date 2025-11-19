@@ -70,9 +70,13 @@ body[data-theme="noite"] { background: radial-gradient(1200px 700px at 50% 10%, 
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 2.5rem;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .logo-fixo:hover {
@@ -87,11 +91,22 @@ body[data-theme="noite"] { background: radial-gradient(1200px 700px at 50% 10%, 
   border-radius: 6px;
 }
 
+.logo-fixo small {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--barro);
+  margin-top: 2px;
+}
+
 /* Tema Noite - Logo adaptado */
 body[data-theme="noite"] .logo-fixo {
   background: rgba(26, 34, 56, 0.95);
   border-color: var(--noite-border);
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+}
+
+body[data-theme="noite"] .logo-fixo small {
+  color: var(--noite-accent);
 }
 
 /* Responsivo - Logo menor em mobile */
@@ -102,6 +117,11 @@ body[data-theme="noite"] .logo-fixo {
     top: 12px;
     left: 12px;
     padding: 4px;
+    font-size: 1.8rem;
+  }
+  
+  .logo-fixo small {
+    font-size: 0.65rem;
   }
 }
 
@@ -204,25 +224,6 @@ body[data-theme="noite"] .logo-fixo {
 
 .creditos p {
   margin: 8px 0;
-}
-
-.contato {
-  margin-top: 15px;
-  font-size: 0.95rem;
-  line-height: 1.8;
-}
-
-.contato .nome {
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 0.3px;
-}
-
-.contato .telefone {
-  display: inline-block;
-  margin-top: 5px;
-  opacity: 0.9;
-  font-size: 0.95rem;
 }
 
 /* Elementos decorativos */
@@ -693,16 +694,54 @@ body[data-theme="noite"] .sem-resultados {
 
 /* ====== RODAPÉ ====== */
 .rodape {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   padding: 30px 20px;
   margin-top: 40px;
   border-top: 1px solid rgba(0,0,0,0.1);
   color: var(--texto);
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 body[data-theme="noite"] .rodape {
   border-top-color: var(--noite-border);
   color: var(--noite-text);
+}
+
+.rodape-contato {
+  text-align: left;
+  flex: 0 0 auto;
+}
+
+.rodape-contato .contato {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.rodape-contato .nome {
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  color: var(--barro);
+}
+
+body[data-theme="noite"] .rodape-contato .nome {
+  color: var(--noite-accent);
+}
+
+.rodape-contato .telefone {
+  display: inline-block;
+  margin-top: 5px;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.rodape small {
+  text-align: right;
+  flex: 1 1 auto;
 }
 
 .rodape a {
@@ -726,4 +765,14 @@ body[data-theme="noite"] .rodape a {
   .verbetes-grid { grid-template-columns: 1fr; }
   .alfabeto-filtro { justify-content: center; }
   .letra-btn { padding: 8px 12px; font-size: 0.9rem; }
+  
+  .rodape {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .rodape small {
+    text-align: left;
+  }
 }
